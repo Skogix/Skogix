@@ -1,5 +1,7 @@
 ﻿namespace Main
 
+open Avalonia.FuncUI.DSL
+
 module Counter =
     open Avalonia.Controls
     open Avalonia.FuncUI.DSL
@@ -30,8 +32,7 @@ module Counter =
           | true -> {state with count = state.count + 1}, Cmd.none
           | false -> state, Cmd.none
         | Reset ->
-          let initState, cmd = init()
-          initState, cmd
+          {state with count = 0}, Cmd.none
         | IncrementDelayed ->
           let incrementDelayedCmd (dispatch: Msg -> unit) : unit =
             let delayedDispatch = async {
@@ -48,25 +49,32 @@ module Counter =
             DockPanel.children [
                 Button.create [
                     Button.dock Dock.Bottom
+                    Button.height 50.
                     Button.onClick (fun _ -> dispatch IncrementDelayed)
                     Button.content "incrementDelayed"
                 ]                
                 Button.create [
+                    Button.isVisible (not state.running)
                     Button.dock Dock.Bottom
+                    Button.height 50.
                     Button.onClick (fun _ -> dispatch RunningTrue)
                     Button.content "runningTrue"
                 ]                
                 Button.create [
+                    Button.isVisible (state.running)
                     Button.dock Dock.Bottom
+                    Button.height 50.
                     Button.onClick (fun _ -> dispatch RunningFalse)
                     Button.content "runningFalse"
                 ]                
                 Button.create [
+                    Button.height 50.
                     Button.dock Dock.Bottom
                     Button.onClick (fun _ -> dispatch Reset)
                     Button.content "reset"
-                ]                
+                ]
                 Button.create [
+                    Button.height 50.
                     Button.dock Dock.Bottom
                     Button.onClick (fun _ -> dispatch Decrement)
                     Button.content "-"

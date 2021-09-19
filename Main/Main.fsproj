@@ -6,21 +6,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Counter.fs"/>
-        <Compile Include="Program.fs"/>
+        <Compile Include="Counter.fs" />
+        <Compile Include="Program.fs" />
+        <Content Include="README.md" />
     </ItemGroup>
 
-    <ItemGroup/>
+    <ItemGroup />
 
     <ItemGroup>
-        <PackageReference Include="Avalonia.Desktop" Version="0.9.7"/>
-        <PackageReference Include="JaggerJo.Avalonia.FuncUI" Version="0.4.0"/>
-        <PackageReference Include="JaggerJo.Avalonia.FuncUI.DSL" Version="0.4.0"/>
-        <PackageReference Include="JaggerJo.Avalonia.FuncUI.Elmish" Version="0.4.0"/>
+        <PackageReference Include="Avalonia.Desktop" Version="0.9.7" />
+        <PackageReference Include="JaggerJo.Avalonia.FuncUI" Version="0.4.0" />
+        <PackageReference Include="JaggerJo.Avalonia.FuncUI.DSL" Version="0.4.0" />
+        <PackageReference Include="JaggerJo.Avalonia.FuncUI.Elmish" Version="0.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Remove=".template.config\**"/>
+        <EmbeddedResource Remove=".template.config\**" />
     </ItemGroup>
 
 </Project>
