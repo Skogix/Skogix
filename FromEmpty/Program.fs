@@ -7,7 +7,7 @@ open Avalonia.Input
 open Avalonia.FuncUI
 open Avalonia.FuncUI.Elmish
 open Avalonia.FuncUI.Components.Hosts
-
+open scratch
 
 type MainWindow() as this =
     inherit HostWindow()
@@ -16,11 +16,11 @@ type MainWindow() as this =
         base.Width <- 400.0
         base.Height <- 400.0
         
-        //this.VisualRoot.VisualRoot.Renderer.DrawFps <- true
-        //this.VisualRoot.VisualRoot.Renderer.DrawDirtyRects <- true
+        this.VisualRoot.VisualRoot.Renderer.DrawFps <- true
+        this.VisualRoot.VisualRoot.Renderer.DrawDirtyRects <- true
 
 
-        Elmish.Program.mkProgram (fun () -> scratch.init()) scratch.update scratch.view
+        Program.mkProgram init update view
         |> Program.withHost this
         |> Program.run
 

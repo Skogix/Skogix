@@ -1,7 +1,6 @@
 ```
 ToDo
-- initcomments
-- meny
+- meny / shell
 - debug
 - egen testengine
 ```

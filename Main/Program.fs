@@ -18,10 +18,10 @@ type MainWindow() as this =
         base.Width <- 400.0
         base.Height <- 400.0
         
-        let timer (state: Counter.State) = // exempel på timer som kors från ui
-          let sub (dispatch: Counter.Msg -> unit) = // subscriber
+        let timer (state: State) = // exempel på timer som kors från ui
+          let sub (dispatch: Msg -> unit) = // subscriber
             let invoke() =
-              Counter.IncrementIfRunning |> dispatch // vad som invokeas
+              IncrementIfRunning |> dispatch // vad som invokeas
               true // fortsätta koras
             
             DispatcherTimer.Run(Func<bool>(invoke), TimeSpan.FromMilliseconds 1000.) |> ignore // i princip en async.sleep 
@@ -30,7 +30,7 @@ type MainWindow() as this =
         this.VisualRoot.VisualRoot.Renderer.DrawDirtyRects <- true
 
 
-        Elmish.Program.mkProgram (fun () -> Counter.init()) Counter.update Counter.view
+        Elmish.Program.mkProgram (fun () -> init()) update view
         |> Program.withHost this
         |> Program.withSubscription timer 
         |> Program.withConsoleTrace
