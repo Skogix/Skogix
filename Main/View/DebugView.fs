@@ -17,7 +17,7 @@ let view (state:ShellState) dispatch =
       let list = state.Debug.messages
       for str in list do
         TextBlock.create [
-          TextBlock.text (str |> string)
+          TextBlock.text (str.Message |> string)
         ]
     ]
   ]
