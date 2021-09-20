@@ -12,6 +12,7 @@ open Avalonia.FuncUI.Elmish
 type ShellState = {
   exampleState: Core.Example.State.State
   testState: Core.Test.State.State
+  debugState: Core.Debug.State.DebugManager
 }
 /// hämta inits
 let shellInit: ShellState * Cmd<ShellMessage> =
@@ -21,7 +22,7 @@ let shellInit: ShellState * Cmd<ShellMessage> =
   {
     exampleState = counterInitState
     testState = emptyTabInitState
-  },
+    debugState = Core.Debug.State.DebugManager()},
   Cmd.batch [counterCmd]
 /// updates
 let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<ShellMessage> =
@@ -33,6 +34,9 @@ let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<She
   | ExamplePageMessage message ->
     let newState, returnMessage = ExamplePage.update message state.exampleState
     {state with exampleState = newState}, returnMessage
+  | DebugPageMessage message ->
+    let newState, returnMessage = DebugPage.update message state.debugState
+    {state with debugState = newState}, returnMessage
 
 /// view
 let shellView (state: ShellState) (dispatch: ShellMessage -> unit) =
@@ -48,6 +52,10 @@ let shellView (state: ShellState) (dispatch: ShellMessage -> unit) =
           TabItem.create [
             TabItem.header "EmptyTab"
             TabItem.content (View.TestView.view state.testState (TestPageMessage >> dispatch))
+          ]
+          TabItem.create [
+            TabItem.header "Debug"
+            TabItem.content (View.DebugView.view state.debugState (DebugPageMessage >> dispatch))
           ]
         ]
       ]

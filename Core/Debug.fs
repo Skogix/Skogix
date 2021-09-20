@@ -28,14 +28,4 @@ type DebugManager() =
     loop []
     )
   member this.Send message = mailbox.Post (Send message)
-  member this.Get = mailbox.PostAndAsyncReply (Get)
-let debugManager = DebugManager()
-
-for i in [1..10] do
-  debugManager.Send (sprintf "Item %i" i)
-
-let asyncData = debugManager.Get
-asyncData |> Async.RunSynchronously |> List.iter (printfn "%A")
-
-let asyncData2 = debugManager.Get
-asyncData2 |> Async.RunSynchronously |> List.iter (printfn "%A")
+  member this.Get() = mailbox.PostAndAsyncReply (Get)

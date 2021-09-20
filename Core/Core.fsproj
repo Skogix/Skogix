@@ -6,11 +6,11 @@
 
 <ItemGroup>
     <Compile Include="Input.fs" />
+    <Compile Include="Debug.fs" />
     <Compile Include="Example\State.fs" />
     <Compile Include="Example\Update.fs" />
     <Compile Include="Test\State.fs" />
     <Compile Include="Test\Update.fs" />
-    <Compile Include="Debug\State.fs" />
 </ItemGroup>
 
 <ItemGroup>
