@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Vzzo8fVI5EtS+k2qG3VFBsBybyIRRKmSMzqlgtmBfLOuU9gDLRN8Xls3j0t/zW7c29CcB0HzbwnlJiBnw0HSmQ==",
+  "dgSpecHash": "HhRLOpK1Z7rUdEWAEQz5LuRye1vwumD163pI09oSRZ+ZSSeQE5TpQgcy3B5EQOMqAia4MSJCbvtyaka23nLk3g==",
   "success": true,
   "projectFilePath": "/home/skogix/RiderProjects/Skogix/Main/Main.fsproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "/home/skogix/.nuget/packages/avalonia.x11/0.9.7/avalonia.x11.0.9.7.nupkg.sha512",
     "/home/skogix/.nuget/packages/elmish/3.0.6/elmish.3.0.6.nupkg.sha512",
     "/home/skogix/.nuget/packages/fsharp.core/5.0.0/fsharp.core.5.0.0.nupkg.sha512",
+    "/home/skogix/.nuget/packages/fsharp.data/3.3.3/fsharp.data.3.3.3.nupkg.sha512",
     "/home/skogix/.nuget/packages/jaggerjo.avalonia.funcui/0.4.0/jaggerjo.avalonia.funcui.0.4.0.nupkg.sha512",
     "/home/skogix/.nuget/packages/jaggerjo.avalonia.funcui.dsl/0.4.0/jaggerjo.avalonia.funcui.dsl.0.4.0.nupkg.sha512",
     "/home/skogix/.nuget/packages/jaggerjo.avalonia.funcui.elmish/0.4.0/jaggerjo.avalonia.funcui.elmish.0.4.0.nupkg.sha512",

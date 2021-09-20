@@ -1,0 +1,8 @@
+/home/skogix/RiderProjects/Skogix/Core/bin/Debug/netstandard2.1/Core.deps.json
+/home/skogix/RiderProjects/Skogix/Core/bin/Debug/netstandard2.1/Core.dll
+/home/skogix/RiderProjects/Skogix/Core/bin/Debug/netstandard2.1/Core.pdb
+/home/skogix/RiderProjects/Skogix/Core/obj/Debug/netstandard2.1/Core.fsprojAssemblyReference.cache
+/home/skogix/RiderProjects/Skogix/Core/obj/Debug/netstandard2.1/Core.AssemblyInfoInputs.cache
+/home/skogix/RiderProjects/Skogix/Core/obj/Debug/netstandard2.1/Core.AssemblyInfo.fs
+/home/skogix/RiderProjects/Skogix/Core/obj/Debug/netstandard2.1/Core.dll
+/home/skogix/RiderProjects/Skogix/Core/obj/Debug/netstandard2.1/Core.pdb

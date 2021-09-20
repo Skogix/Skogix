@@ -6,15 +6,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Domain.fs" />
-        <Compile Include="Message.fs" />
-        <Compile Include="ExamplePage.fs" />
-        <Compile Include="TestPage.fs" />
+        <Compile Include="Update\ExampleUpdate.fs" />
+        <Compile Include="Update\TestUpdate.fs" />
+        <Compile Include="View\ExampleView.fs" />
+        <Compile Include="View\TestView.fs" />
         <Compile Include="Shell.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
-    <ItemGroup />
+    <ItemGroup>
+      <ProjectReference Include="..\Core\Core.fsproj" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia.Desktop" Version="0.9.7" />

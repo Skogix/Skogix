@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+<PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+</PropertyGroup>
+
+<ItemGroup>
+    <Compile Include="Input.fs" />
+    <Compile Include="Example\State.fs" />
+    <Compile Include="Example\Update.fs" />
+    <Compile Include="Test\State.fs" />
+    <Compile Include="Test\Update.fs" />
+    <Folder Include="Debug" />
+</ItemGroup>
+
+<ItemGroup>
+    <PackageReference Include="Elmish" Version="3.0.6" />
+    <PackageReference Include="FSharp.Data" Version="3.3.3" />
+</ItemGroup>
+</Project>

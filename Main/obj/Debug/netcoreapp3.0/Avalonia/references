@@ -27,8 +27,10 @@
 /home/skogix/.nuget/packages/avalonia/0.9.7/lib/netcoreapp2.0/Avalonia.Visuals.dll
 /home/skogix/.nuget/packages/avalonia.win32/0.9.7/lib/netstandard2.0/Avalonia.Win32.dll
 /home/skogix/.nuget/packages/avalonia.x11/0.9.7/lib/netstandard2.0/Avalonia.X11.dll
+/home/skogix/RiderProjects/Skogix/Core/bin/Debug/netstandard2.1/Core.dll
 /home/skogix/.nuget/packages/elmish/3.0.6/lib/netstandard2.0/Elmish.dll
 /home/skogix/.nuget/packages/fsharp.core/5.0.0/lib/netstandard2.0/FSharp.Core.dll
+/home/skogix/.nuget/packages/fsharp.data/3.3.3/lib/netstandard2.0/FSharp.Data.dll
 /home/skogix/.nuget/packages/jetbrains.annotations/10.3.0/lib/netstandard1.0/JetBrains.Annotations.dll
 /home/skogix/.nuget/packages/microsoft.netcore.app.ref/3.0.0/ref/netcoreapp3.0/Microsoft.CSharp.dll
 /home/skogix/.nuget/packages/microsoft.netcore.app.ref/3.0.0/ref/netcoreapp3.0/Microsoft.VisualBasic.Core.dll
