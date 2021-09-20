@@ -13,6 +13,6 @@ let testInit = {
   debugOutput = []}, Cmd.none
 let debugInit() =
   let debugState = {
-    manager = Debug.State.DebugManager()
+    manager = Debug.State.debugManager
     messages = []}
   debugState, Cmd.none

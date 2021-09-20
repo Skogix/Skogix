@@ -10,7 +10,6 @@
     <Compile Include="State.fs" />
     <Compile Include="Init.fs" />
     <Compile Include="Example\Update.fs" />
-    <Compile Include="Test\State.fs" />
     <Compile Include="Test\Update.fs" />
 </ItemGroup>
 

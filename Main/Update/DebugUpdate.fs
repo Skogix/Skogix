@@ -1,16 +1,23 @@
-module Main.DebugPage
+module Main.Update.DebugUpdate
 
 open System
 open Avalonia.Threading
+open Core.Debug.State
 open Core.Input
 open Core.State
+open Core.Test
 open Elmish
 
-let update message (state:ShellState) =
+let update (message:Core.Input.DebugInput) (state:ShellState) =
   match message with
-  | Update ->
-    let newMessages = {state.Debug with messages = state.Debug.messages}
-    state.Debug, Cmd.none
+  | DebugInput.Update ->
+    let updatedState =
+      {state.Debug with messages = state.Debug.manager.Get() |> Async.RunSynchronously}
+    updatedState, Cmd.none
+  | DebugInput.Add str ->
+    state.Debug.manager.Send str
+    let cmdMessage = Core.Input.ShellMessage.DebugPageMessage Core.Input.DebugInput.Update
+    state.Debug, Cmd.ofMsg (cmdMessage)
 
 let timer (state:ShellState) = // exempel på timer som kors från ui
   let manager = state
@@ -20,3 +27,5 @@ let timer (state:ShellState) = // exempel på timer som kors från ui
       true // fortsätta korareturnms
     DispatcherTimer.Run(Func<bool>(invoke), TimeSpan.FromMilliseconds 10.) |> ignore // i princip en async.sleep 
   Cmd.ofSub sub // skickar command med en subrutin
+
+let debug str = debugManager.Send str

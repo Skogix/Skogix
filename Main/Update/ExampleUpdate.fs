@@ -1,4 +1,4 @@
-﻿module ExamplePage
+﻿module ExampleUpdate
 
 open System
 open Avalonia.Threading
@@ -6,6 +6,8 @@ open Core.Input
 open Core.State
 open Elmish
 open Core.Example
+open Main
+open Main.Update
 
 
 let timer state = // exempel på timer som kors från ui
@@ -18,7 +20,8 @@ let timer state = // exempel på timer som kors från ui
 let incrementDelayedCmd (dispatch: ShellMessage -> unit) =
   let delayedDispatch =
     async {
-      do! Async.Sleep 1000
+      do! Async.Sleep 3000
+      DebugUpdate.debug "Kor incrementDelayedCmd" 
       dispatch (ExamplePageMessage Increment)
     }
   Async.StartImmediate delayedDispatch

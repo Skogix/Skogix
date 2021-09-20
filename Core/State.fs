@@ -13,7 +13,7 @@ type TestOutput = {
 }
 type DebugManager = {
   manager: Debug.State.DebugManager
-  messages: Debug.State.DebugMessage list
+  messages: Debug.State.DebugData list
 }
 type ShellState = {
   Test: TestOutput

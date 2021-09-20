@@ -29,3 +29,4 @@ type DebugManager() =
     )
   member this.Send message = mailbox.Post (Send message)
   member this.Get() = mailbox.PostAndAsyncReply (Get)
+let debugManager = DebugManager()

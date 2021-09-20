@@ -8,6 +8,7 @@ open Elmish
 open Main
 open Avalonia.FuncUI.Elmish
 open Core.State
+open Main.Update
 
 /// håll ett record for states
 let shellInit: ShellState * Cmd<ShellMessage> =
@@ -29,10 +30,10 @@ let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<She
     let updatedState = {state with Test = newState}
     (updatedState, returnMessage)
   | ExamplePageMessage message ->
-    let newState, returnMessage = ExamplePage.update message state
+    let newState, returnMessage = ExampleUpdate.update message state
     {state with Example = newState}, returnMessage
   | DebugPageMessage message ->
-    let newState, returnMessage = DebugPage.update message state
+    let newState, returnMessage = DebugUpdate.update message state
     {state with Debug = newState}, returnMessage
 
 /// view
@@ -71,8 +72,8 @@ type MainWindow() as this =
         Elmish.Program.mkProgram (fun _ -> shellInit) shellUpdate shellView
         |> Program.withHost this
 //        |> Program.withSubscription timer
-        |> Program.withSubscription ExamplePage.timer
-        |> Program.withSubscription DebugPage.timer
+        |> Program.withSubscription ExampleUpdate.timer
+        |> Program.withSubscription DebugUpdate.timer
         |> Program.withConsoleTrace
         |> Program.run
 
