@@ -96,3 +96,6 @@
 /home/skogix/RiderProjects/Skogix/Main/obj/Debug/netcoreapp3.0/Main.dll
 /home/skogix/RiderProjects/Skogix/Main/obj/Debug/netcoreapp3.0/Main.pdb
 /home/skogix/RiderProjects/Skogix/Main/obj/Debug/netcoreapp3.0/Main.genruntimeconfig.cache
+/home/skogix/RiderProjects/Skogix/Main/bin/Debug/netcoreapp3.0/FSharp.Data.dll
+/home/skogix/RiderProjects/Skogix/Main/bin/Debug/netcoreapp3.0/Core.dll
+/home/skogix/RiderProjects/Skogix/Main/bin/Debug/netcoreapp3.0/Core.pdb
