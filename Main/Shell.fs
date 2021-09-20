@@ -24,6 +24,7 @@ let shellInit: ShellState * Cmd<ShellMessage> =
   Cmd.batch [exampleCmd]
 /// updates
 let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<ShellMessage> =
+  Core.Debug.debugShellMessage (message)
   match message with
   | TestPageMessage message ->
     let newState, returnMessage = TestPage.update message state

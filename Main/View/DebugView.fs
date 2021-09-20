@@ -2,8 +2,7 @@ module Main.View.DebugView
 
 open Avalonia.Controls
 open Avalonia.FuncUI.DSL
-open Avalonia.Threading
-open Core.Debug.State
+open Core.Debug
 open Core.Input
 open Core.State
 

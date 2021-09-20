@@ -21,7 +21,7 @@ let incrementDelayedCmd (dispatch: ShellMessage -> unit) =
   let delayedDispatch =
     async {
       do! Async.Sleep 3000
-      DebugUpdate.debug "Kor incrementDelayedCmd" 
+      Core.Debug.debug "Kor incrementDelayedCmd" 
       dispatch (ExamplePageMessage Increment)
     }
   Async.StartImmediate delayedDispatch
@@ -33,7 +33,6 @@ let update (msg: ExampleInput) (shellState: Core.State.ShellState) =
   let state = shellState.Example
   match msg with
   | Increment ->
-    DebugUpdate.debug "Incrementar"
     Update.incrementCounter state, Cmd.none
   | Decrement -> Update.decrementCounter state, Cmd.none
   | IncrementIfRunning ->

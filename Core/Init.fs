@@ -1,5 +1,5 @@
 module Core.Init
-open Core.Debug.State
+open Core.Debug
 open Elmish
 open State
 let exampleInit =
@@ -13,6 +13,6 @@ let testInit = {
   debugOutput = []}, Cmd.none
 let debugInit() =
   let debugState = {
-    manager = Debug.State.debugManager
+    manager = Debug.debugManager
     messages = []}
   debugState, Cmd.none

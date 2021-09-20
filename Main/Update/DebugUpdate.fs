@@ -2,10 +2,8 @@ module Main.Update.DebugUpdate
 
 open System
 open Avalonia.Threading
-open Core.Debug.State
 open Core.Input
 open Core.State
-open Core.Test
 open Elmish
 
 let update (message:Core.Input.DebugInput) (state:ShellState) =
@@ -28,4 +26,3 @@ let timer (state:ShellState) = // exempel på timer som kors från ui
     DispatcherTimer.Run(Func<bool>(invoke), TimeSpan.FromMilliseconds 10.) |> ignore // i princip en async.sleep 
   Cmd.ofSub sub // skickar command med en subrutin
 
-let debug str = debugManager.Send str

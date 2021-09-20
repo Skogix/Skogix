@@ -1,6 +1,6 @@
 module Core.State
 
-open Core.Debug.State
+open Core.Debug
 
 type ExampleOutput = {
   running: bool
@@ -9,14 +9,14 @@ type ExampleOutput = {
 type TestOutput = {
   stringValue: string
   intValue: int
-  debugOutput: Core.Debug.State.DebugData list
+  debugOutput: DebugData list
 }
-type DebugManager = {
-  manager: Debug.State.DebugManager
-  messages: Debug.State.DebugData list
+type DebugOutput = {
+  manager: DebugManager
+  messages: DebugData list
 }
 type ShellState = {
   Test: TestOutput
   Example: ExampleOutput
-  Debug: DebugManager
+  Debug: DebugOutput
 }
