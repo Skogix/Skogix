@@ -1,10 +1,8 @@
 module Main.Shell
 
-open System
 open Avalonia.FuncUI.Components.Hosts
 open Avalonia.FuncUI.DSL
 open Avalonia.Controls
-open Avalonia.Threading
 open Elmish
 open Main
 open Avalonia.FuncUI.Elmish
@@ -13,7 +11,7 @@ open Main.Message
 /// håll ett record for states
 type ShellState = {
   counterState: Counter.State
-  emptyTabState: EmptyTab.State
+  emptyTabState: TestPage.State
 }
 /// shell-messages, d-union
   
@@ -21,7 +19,7 @@ type ShellState = {
 let shellInit: ShellState * Cmd<ShellMessage> =
   // om init kor ett command så kommer det här inte att funka, t.ex hämta data
   let counterInitState, counterCmd = Counter.init
-  let emptyTabInitState, emptyTabCmd = EmptyTab.init
+  let emptyTabInitState, emptyTabCmd = TestPage.init
   {
     counterState = counterInitState
     emptyTabState = emptyTabInitState
@@ -30,14 +28,13 @@ let shellInit: ShellState * Cmd<ShellMessage> =
 /// updates
 let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<ShellMessage> =
   match message with
-  | CounterMessage (message) ->
+  | TestPageMessage (message) ->
     let newState, returnMessage = Counter.update message state.counterState
     let updatedState = {state with counterState = newState}
     (updatedState, returnMessage)
-  | EmptyTabMessage message ->
-    let newState, returnMessage = EmptyTab.update message state.emptyTabState
-    let newReturnMessage = (returnMessage)
-    state, returnMessage
+  | ExamplePageMessage message ->
+    let newState, returnMessage = TestPage.update message state.emptyTabState
+    {state with emptyTabState = newState}, returnMessage
 
 /// view
 let shellView (state: ShellState) (dispatch: ShellMessage -> unit) =
@@ -48,11 +45,11 @@ let shellView (state: ShellState) (dispatch: ShellMessage -> unit) =
         TabControl.viewItems [
           TabItem.create [
             TabItem.header "Counter"
-            TabItem.content (Counter.view state.counterState (ShellMessage.CounterMessage >> dispatch))
+            TabItem.content (Counter.view state.counterState (ShellMessage.TestPageMessage >> dispatch))
           ]
           TabItem.create [
             TabItem.header "EmptyTab"
-            TabItem.content (EmptyTab.view state.emptyTabState (ShellMessage.EmptyTabMessage >> dispatch))
+            TabItem.content (TestPage.view state.emptyTabState (ShellMessage.ExamplePageMessage >> dispatch))
           ]
         ]
       ]
@@ -68,17 +65,18 @@ type MainWindow() as this =
         this.VisualRoot.VisualRoot.Renderer.DrawFps <- true
         this.VisualRoot.VisualRoot.Renderer.DrawDirtyRects <- true
 
-        let timer (state:ShellState) =
-          let sub (dispatch: ShellMessage -> unit) =
-            let invoke() =
-              (Message.CounterMessage IncrementIfRunning) |> dispatch
-              false
-            DispatcherTimer.Run(Func<bool>(invoke), TimeSpan.FromMilliseconds(100.)) |> ignore
-          Cmd.ofSub sub
+//        let timer (state:ShellState) =
+//          let sub (dispatch: ShellMessage -> unit) =
+//            let invoke() =
+//              (Message.CounterMessage IncrementIfRunning) |> dispatch
+////              true
+//            DispatcherTimer.Run(Func<bool>(invoke), TimeSpan.FromMilliseconds(100.)) |> ignore
+//          Cmd.ofSub sub
 
         Elmish.Program.mkProgram (fun _ -> shellInit) shellUpdate shellView
         |> Program.withHost this
-        |> Program.withSubscription timer
+//        |> Program.withSubscription timer
+        |> Program.withSubscription Counter.timer
         |> Program.withConsoleTrace
         |> Program.run
 

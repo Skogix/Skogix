@@ -1,10 +1,11 @@
 ```
 ToDo
-- meny / shell
 - debug
-- egen testengine
+- testengine
 ```
 ```
 0.1     init
 0.2     shell
+0.3     meny
+0.4     example page
 ```

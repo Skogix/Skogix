@@ -1,6 +1,6 @@
 module Main.Message
 
-type CounterMessage =
+type TestPageMessage =
   | IncrementIfRunning
   | Increment
   | IncrementDelayed 
@@ -9,8 +9,8 @@ type CounterMessage =
   | RunningTrue
   | RunningFalse
   | GetState
-type EmptyTabMessage =
+type ExamplePageMessage =
   | DoNothing
 type ShellMessage =
-  | CounterMessage of CounterMessage
-  | EmptyTabMessage of EmptyTabMessage
+  | TestPageMessage of TestPageMessage
+  | ExamplePageMessage of ExamplePageMessage
