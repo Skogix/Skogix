@@ -1,7 +1,9 @@
 module Core.State
 
 open Core.Debug
-
+/// State.fs
+/// all output som går till UI
+/// shellState låter moduler dela state
 type ExampleOutput = {
   running: bool
   count: int

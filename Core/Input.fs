@@ -1,4 +1,7 @@
 module Core.Input
+/// Input.fs
+/// innehåller all kommunikation mellan UI -> Core
+/// shellmessage är sättet moduler kan prata med varandra via UI
 type TestInput =
   | DoNothing
 type ExampleInput =

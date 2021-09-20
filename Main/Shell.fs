@@ -1,21 +1,17 @@
 module Main.Shell
 
 open Elmish
-open Avalonia
-open Avalonia.Controls.ApplicationLifetimes
-open Avalonia.FuncUI
-open Avalonia.FuncUI.Components.Hosts
 open Main.Update
-open Avalonia.FuncUI.Components.Hosts
 open Avalonia.FuncUI.DSL
 open Avalonia.Controls
 open Core.Input
 open Main
-open Avalonia.FuncUI.Elmish
 open Core.State
-open Main.Update
+/// Shell.fs
+/// en wrapper-modul som låter core-moduler kommunicera
+/// är ansvarig for all ui-data, routeing, meny / persistent ui-element
 
-/// håll ett record for states
+/// shellInit: ShellState * Cmd<ShellMessage>
 let shellInit: ShellState * Cmd<ShellMessage> =
   // om init kor ett command så kommer det här inte att funka, t.ex hämta data
   let exampleInit, exampleCmd = Core.Init.exampleInit
@@ -27,8 +23,9 @@ let shellInit: ShellState * Cmd<ShellMessage> =
     Core.State.Debug = debugInit
   },
   Cmd.batch [exampleCmd]
-let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<ShellMessage> =
-  Core.Debug.debugShellMessage (message)
+/// shellUpdate: ShellMessage -> ShellState -> (ShellState * Cmd<ShellMessage>)
+let shellUpdate message state =
+  Core.Debug.debugShellMessage message
   match message with
   | TestPageMessage message ->
     let newState, returnMessage = TestPage.update message state
@@ -41,7 +38,8 @@ let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<She
     let newState, returnMessage = DebugUpdate.update message state
     {state with Debug = newState}, returnMessage
 
-/// view
+/// shellView: ShellState -> (ShellMessage -> unit) -> IView<DockPanel>
+/// är i praktiken just nu bara menyn
 let shellView (shellState: ShellState) (dispatch: ShellMessage -> unit) =
   DockPanel.create [
     DockPanel.children [

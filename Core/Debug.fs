@@ -2,7 +2,14 @@ module Core.Debug
 
 open System
 open Core.Input
+/// ToDo
+/// filtrering
+/// har meddelandet skickats till output
+/// fixa terminal-output
 
+/// Debug.fs
+/// hanterar all intern debugging
+/// borde vara threadsafe
 type DebugMessage = string
 type DebugData = {
   Message: DebugMessage
@@ -11,6 +18,9 @@ type DebugData = {
 type DebugMailboxMessage =
   | Send of string
   | Get of AsyncReplyChannel<DebugData list>
+  
+  
+  
 type DebugManager() =
   let mailbox = MailboxProcessor.Start(fun inbox ->
     let rec loop (currentData: DebugData list) = async {
@@ -29,10 +39,14 @@ type DebugManager() =
     )
   member this.Send message = mailbox.Post (Send message)
   member this.Get() = mailbox.PostAndAsyncReply (Get)
+// just nu räcker det med en manager, får se senare om varje projekt skapar sin egen
 let debugManager = DebugManager()
+/// debug: string -> unit
+/// skicka en enkel string till managern, används mest for direkt testing / debugging
 let debug str = debugManager.Send str
 
-// lättast att ha all formatting på samma ställe
+/// debugShellMessage: ShellMessage -> unit
+/// formatterar och skickar debug-meddelanden till managern
 let debugShellMessage (msg:Core.Input.ShellMessage) =
   let send str = debugManager.Send str
   match msg with

@@ -2,6 +2,11 @@ module Core.Init
 open Core.Debug
 open Elmish
 open State
+/// ToDo
+/// hämta settings via Cmd senare
+
+/// Init.fs
+/// all initial state
 let exampleInit =
   {
     running = false

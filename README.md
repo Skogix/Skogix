@@ -1,6 +1,7 @@
 ```
 ToDo
-- 
+- settings
+- testengine
 ```
 ```
 0.1     init
@@ -10,7 +11,6 @@ ToDo
 0.5     file structure
 0.6     debug
 0.61    debug workflow
-0.7     testengine
 ```
 ```
 core

@@ -14,7 +14,11 @@ open Avalonia.FuncUI
 open Avalonia.FuncUI.Components.Hosts
 open Main.Shell
 open Main.Update
+/// ToDo
+/// flytta subscriptions till Core for separation
 
+/// Program.fs
+/// avalonia-haxx for att skapa window och andra automagiska saker.
         
 type MainWindow() as this =
     inherit HostWindow()
@@ -48,7 +52,6 @@ type App() =
 
 
 module Program =
-
     [<EntryPoint>]
     let main(args: string[]) =
         AppBuilder
