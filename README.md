@@ -1,6 +1,6 @@
 ```
 ToDo
-- testengine
+- 
 ```
 ```
 0.1     init
@@ -10,4 +10,28 @@ ToDo
 0.5     file structure
 0.6     debug
 0.61    debug workflow
+0.7     testengine
+```
+```
+core
+- input
+  alla inputmessages plus ShellMessage for att prata mellan moduler
+- debug
+  simpel hemmagjord debugmanager
+- state
+  all outputstate plus ShellState for dela data mellan moduler
+- init
+  basic inits, kommer senare hämta data via Cmd
+- *folder*
+  coredata for moduler, eventuellt flytta till separata projects senare
+
+main
+- *update*
+  routeing/updates for varje page
+- *view*
+  view for varje page
+- shell
+  wrapper som hanterar all kommunikation mellan program -> moduler
+- program
+  entrypoint, skapar window, hanterar avalonia
 ```

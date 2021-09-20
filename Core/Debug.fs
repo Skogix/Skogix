@@ -38,13 +38,13 @@ let debugShellMessage (msg:Core.Input.ShellMessage) =
   match msg with
   | ShellMessage.DebugPageMessage debugMessage ->
     match debugMessage with
-    | Update -> send $"SpamUpdate!"
+    | Update -> ()
     | Add str -> send $"debug.Add {str}"
   | ShellMessage.ExamplePageMessage exampleMessage ->
     match exampleMessage with
     | IncrementIfRunning -> ()
     | Increment -> send $"example.Increment"
-//    | IncrementDelayed -> send $"example.IncrementDelayed"
+    | IncrementDelayed -> send $"example.IncrementDelayed"
     | Decrement -> send $"example.Decrement"
     | ResetCount -> send $"example.ResetCount"
     | RunningTrue -> send $"example.RunningTrue"

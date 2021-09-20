@@ -1,10 +1,15 @@
 module Main.Shell
 
+open Elmish
+open Avalonia
+open Avalonia.Controls.ApplicationLifetimes
+open Avalonia.FuncUI
+open Avalonia.FuncUI.Components.Hosts
+open Main.Update
 open Avalonia.FuncUI.Components.Hosts
 open Avalonia.FuncUI.DSL
 open Avalonia.Controls
 open Core.Input
-open Elmish
 open Main
 open Avalonia.FuncUI.Elmish
 open Core.State
@@ -22,7 +27,6 @@ let shellInit: ShellState * Cmd<ShellMessage> =
     Core.State.Debug = debugInit
   },
   Cmd.batch [exampleCmd]
-/// updates
 let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<ShellMessage> =
   Core.Debug.debugShellMessage (message)
   match message with
@@ -60,21 +64,3 @@ let shellView (shellState: ShellState) (dispatch: ShellMessage -> unit) =
       ]
     ]
   ]
-type MainWindow() as this =
-    inherit HostWindow()
-    do
-        base.Title <- "Main"
-        base.Width <- 400.0
-        base.Height <- 400.0
-        
-        this.VisualRoot.VisualRoot.Renderer.DrawFps <- true
-        this.VisualRoot.VisualRoot.Renderer.DrawDirtyRects <- true
-
-        Elmish.Program.mkProgram (fun _ -> shellInit) shellUpdate shellView
-        |> Program.withHost this
-//        |> Program.withSubscription timer
-        |> Program.withSubscription ExampleUpdate.timer
-        |> Program.withSubscription DebugUpdate.timer
-        |> Program.withConsoleTrace
-        |> Program.run
-
