@@ -1,7 +1,22 @@
 ```
 ToDo
+- läs
+  - https://docs.avaloniaui.net/docs/controls
+  - https://docs.avaloniaui.net/docs/layout
+- kolla upp om det är värt att använda xaml for layout
+  - https://docs.avaloniaui.net/docs/getting-started/ide-support
 - settings
 - testengine
+- ui-haxx
+  - mindre egen tutorial/guide/lista over ui-components i avalonia
+  - submenyer
+  - keyboard binds
+  
+- testprojekt
+  - tic-tac-toe
+  - chess
+  - pathfinding
+  - parser
 ```
 ```
 0.1     init
@@ -10,7 +25,6 @@ ToDo
 0.4     example page
 0.5     file structure
 0.6     debug
-0.61    debug workflow
 ```
 ```
 core
