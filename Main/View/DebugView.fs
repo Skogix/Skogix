@@ -15,7 +15,7 @@ let view (state:ShellState) dispatch =
         ]
       Button.create [
         Button.content "Add debug"
-        Button.onClick (fun _ -> state.Debug.manager.Send "Test")
+        Button.onClick (fun _ -> state.Debug.manager.Send (sprintf "DebugMessageFrånKnapp #%A" (state.Debug.manager.Get() |> Async.RunSynchronously |> List.length)))
       ]
     ]
   ]
