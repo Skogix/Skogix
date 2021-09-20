@@ -23,7 +23,7 @@ type DebugManager() =
         return! loop (debugData :: currentData)
       | Get (rc) ->
         rc.Reply currentData
-        return! loop []
+        return! loop currentData
     }
     loop []
     )

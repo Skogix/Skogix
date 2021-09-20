@@ -10,7 +10,7 @@ type ExampleInput =
   | RunningTrue
   | RunningFalse
 type DebugInput =
-  | Show
+  | Update 
 type ShellMessage =
   | TestPageMessage of TestInput
   | ExamplePageMessage of ExampleInput

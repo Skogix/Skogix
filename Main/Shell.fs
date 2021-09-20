@@ -18,7 +18,7 @@ let shellInit: ShellState * Cmd<ShellMessage> =
   {
     Core.State.Example = exampleInit
     Core.State.Test = testInit
-    Core.State.DebugManager = debugInit
+    Core.State.Debug = debugInit
   },
   Cmd.batch [exampleCmd]
 /// updates
@@ -33,7 +33,7 @@ let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<She
     {state with Example = newState}, returnMessage
   | DebugPageMessage message ->
     let newState, returnMessage = DebugPage.update message state
-    {state with DebugManager = newState}, returnMessage
+    {state with Debug = newState}, returnMessage
 
 /// view
 let shellView (shellState: ShellState) (dispatch: ShellMessage -> unit) =
@@ -72,6 +72,7 @@ type MainWindow() as this =
         |> Program.withHost this
 //        |> Program.withSubscription timer
         |> Program.withSubscription ExamplePage.timer
+        |> Program.withSubscription DebugPage.timer
         |> Program.withConsoleTrace
         |> Program.run
 
