@@ -7,35 +7,36 @@ open Core.Input
 open Elmish
 open Main
 open Avalonia.FuncUI.Elmish
+open Core.State
 
 /// håll ett record for states
-type ShellState = {
-  exampleState: Core.Example.State.State
-  testState: Core.Test.State.State
-}
-/// hämta inits
 let shellInit: ShellState * Cmd<ShellMessage> =
   // om init kor ett command så kommer det här inte att funka, t.ex hämta data
-  let counterInitState, counterCmd = Core.Example.State.init
-  let emptyTabInitState, emptyTabCmd = Core.Test.State.init
+  let exampleInit, exampleCmd = Core.Init.exampleInit
+  let testInit, testCmd = Core.Init.testInit
+  let debugInit, debugCmd = Core.Init.debugInit()
   {
-    exampleState = counterInitState
-    testState = emptyTabInitState
+    Core.State.Example = exampleInit
+    Core.State.Test = testInit
+    Core.State.DebugManager = debugInit
   },
-  Cmd.batch [counterCmd]
+  Cmd.batch [exampleCmd]
 /// updates
 let shellUpdate (message:ShellMessage) (state:ShellState) : ShellState * Cmd<ShellMessage> =
   match message with
   | TestPageMessage message ->
-    let newState, returnMessage = TestPage.update message state.testState
-    let updatedState = {state with testState = newState}
+    let newState, returnMessage = TestPage.update message state
+    let updatedState = {state with Test = newState}
     (updatedState, returnMessage)
   | ExamplePageMessage message ->
-    let newState, returnMessage = ExamplePage.update message state.exampleState
-    {state with exampleState = newState}, returnMessage
+    let newState, returnMessage = ExamplePage.update message state
+    {state with Example = newState}, returnMessage
+  | DebugPageMessage message ->
+    let newState, returnMessage = DebugPage.update message state
+    {state with DebugManager = newState}, returnMessage
 
 /// view
-let shellView (state: ShellState) (dispatch: ShellMessage -> unit) =
+let shellView (shellState: ShellState) (dispatch: ShellMessage -> unit) =
   DockPanel.create [
     DockPanel.children [
       TabControl.create [
@@ -43,11 +44,15 @@ let shellView (state: ShellState) (dispatch: ShellMessage -> unit) =
         TabControl.viewItems [
           TabItem.create [
             TabItem.header "Example"
-            TabItem.content (View.ExampleView.view state.exampleState (ExamplePageMessage >> dispatch))
+            TabItem.content (View.ExampleView.view shellState (ExamplePageMessage >> dispatch))
           ]
           TabItem.create [
             TabItem.header "EmptyTab"
-            TabItem.content (View.TestView.view state.testState (TestPageMessage >> dispatch))
+            TabItem.content (View.TestView.view shellState (TestPageMessage >> dispatch))
+          ]
+          TabItem.create [
+            TabItem.header "Debug"
+            TabItem.content (View.DebugView.view shellState (DebugPageMessage >> dispatch))
           ]
         ]
       ]

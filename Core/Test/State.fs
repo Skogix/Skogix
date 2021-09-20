@@ -1,9 +1,6 @@
 module Core.Test.State
 
 open Elmish
+open Core.State
 
-type State = {
-  stringValue: string
-  intValue: int
-}
-let init = {stringValue = "Test"; intValue = 0}, Cmd.none
+let init = { stringValue = "Test"; intValue = 0; debugOutput = [] }, Cmd.none

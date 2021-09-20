@@ -3,6 +3,7 @@
 open System
 open Avalonia.Threading
 open Core.Input
+open Core.State
 open Elmish
 open Core.Example
 
@@ -25,7 +26,8 @@ let incrementDelayedCmd (dispatch: ShellMessage -> unit) =
  
  
   
-let update (msg: ExampleInput) (state: State.State) =
+let update (msg: ExampleInput) (shellState: Core.State.ShellState) =
+  let state = shellState.Example
   match msg with
   | Increment -> Update.incrementCounter state, Cmd.none
   | Decrement -> Update.decrementCounter state, Cmd.none

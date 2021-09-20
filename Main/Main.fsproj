@@ -8,8 +8,10 @@
     <ItemGroup>
         <Compile Include="Update\ExampleUpdate.fs" />
         <Compile Include="Update\TestUpdate.fs" />
+        <Compile Include="Update\DebugUpdate.fs" />
         <Compile Include="View\ExampleView.fs" />
         <Compile Include="View\TestView.fs" />
+        <Compile Include="View\DebugView.fs" />
         <Compile Include="Shell.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>

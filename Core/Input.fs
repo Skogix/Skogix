@@ -9,6 +9,9 @@ type ExampleInput =
   | ResetCount
   | RunningTrue
   | RunningFalse
+type DebugInput =
+  | Show
 type ShellMessage =
   | TestPageMessage of TestInput
   | ExamplePageMessage of ExampleInput
+  | DebugPageMessage of DebugInput

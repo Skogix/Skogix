@@ -4,9 +4,10 @@ open Avalonia.Controls
 open Avalonia.FuncUI.DSL
 open Avalonia.Layout
 open Core.Input
-open Core.Example.State
+open Core.State
 
-let view (state: State) (dispatch: ExampleInput -> unit) =
+let view (shellState: Core.State.ShellState) (dispatch: ExampleInput -> unit) =
+  let state = shellState.Example
   DockPanel.create [ DockPanel.children [ Button.create [ Button.dock Dock.Bottom
                                                           Button.height 50.
                                                           Button.onClick (fun _ -> dispatch (IncrementDelayed))
