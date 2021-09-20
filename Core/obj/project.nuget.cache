@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "SuDgiV0TEEtbHyJNYNmB7+oorXiWxXOeA1ZgLNu3H/AFliM1WUizJyWM1vUaYDhiEgTuac1ysJDWEn+ke7ZxUQ==",
+  "success": true,
+  "projectFilePath": "/home/skogix/RiderProjects/Skogix/Core/Core.fsproj",
+  "expectedPackageFiles": [
+    "/home/skogix/.nuget/packages/elmish/3.0.6/elmish.3.0.6.nupkg.sha512",
+    "/home/skogix/.nuget/packages/fsharp.core/5.0.0/fsharp.core.5.0.0.nupkg.sha512",
+    "/home/skogix/.nuget/packages/fsharp.data/3.3.3/fsharp.data.3.3.3.nupkg.sha512"
+  ],
+  "logs": []
+}
