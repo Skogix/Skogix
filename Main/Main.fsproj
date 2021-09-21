@@ -9,6 +9,7 @@
         <Compile Include="Update\DebugUpdate.fs" />
         <Compile Include="Update\ExampleUpdate.fs" />
         <Compile Include="Update\TestUpdate.fs" />
+        <Compile Include="Update\TicTacToeUpdate.fs" />
         <Compile Include="View\ExampleView.fs" />
         <Compile Include="View\TestView.fs" />
         <Compile Include="View\DebugView.fs" />

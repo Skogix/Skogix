@@ -1,5 +1,7 @@
 module Main.View.TicTacToeView
 
+open System.ComponentModel
+open Avalonia.Controls
 open Avalonia.Controls.Primitives
 open Avalonia.Controls.Shapes
 open Avalonia.FuncUI.DSL
@@ -7,8 +9,10 @@ open Avalonia.Controls
 open Avalonia.FuncUI.DSL
 open Avalonia.Layout
 open Avalonia.Media
+open Core.Input
+open Core.State
 
-let view state dispatch =
+let view (shellState:ShellState) dispatch =
   DockPanel.create [
     DockPanel.children [
       Rectangle.create [
@@ -39,19 +43,21 @@ let view state dispatch =
             UniformGrid.horizontalAlignment HorizontalAlignment.Center
             UniformGrid.verticalAlignment VerticalAlignment.Center
             UniformGrid.children [
-              for x in [0..2] do
-                for y in [0..2] do
-                TextBlock.create [
-                  TextBlock.onPointerPressed (fun _ -> Core.Debug.debug $"Klickade {x}, {y}")
-                  TextBlock.fontSize 50.
-                  TextBlock.textAlignment TextAlignment.Center
-                  TextBlock.verticalAlignment VerticalAlignment.Center
-                  TextBlock.horizontalAlignment HorizontalAlignment.Center
-                  TextBlock.margin 10.
-                  TextBlock.background "brownde"
-                  TextBlock.height 200.
-                  TextBlock.width 200.
-                  TextBlock.text $"{x},{y}"
+              for map in shellState.ticTacToe.squareMap do
+                let id, value = map.Deconstruct()
+                let text =
+                  match value with
+                  | Some v ->
+                    match v with
+                    | Core.Domain.TicTacToe.Circle -> "O"
+                    | Core.Domain.TicTacToe.Cross -> "X"
+                  | None -> ""
+                Button.create [
+                  Button.width 200.
+                  Button.height 200.
+                  Button.margin 10.
+                  Button.content (string text)
+                  Button.onClick (fun _ -> dispatch (TryPlaceMove id))
                 ]
             ]
           ]

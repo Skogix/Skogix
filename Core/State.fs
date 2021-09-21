@@ -1,6 +1,9 @@
 module Core.State
 
 open Core.Debug
+open System
+open Core.Domain
+open Core.Domain.TicTacToe
 /// State.fs
 /// all output som går till UI
 /// shellState låter moduler dela state
@@ -17,8 +20,13 @@ type DebugOutput = {
   manager: DebugManager
   messages: DebugData list
 }
+type TicTacToeOutput = {
+  squareMap: SquareMap
+  currentTurn: Domain.TicTacToe.Player
+  }
 type ShellState = {
-  Test: TestOutput
-  Example: ExampleOutput
-  Debug: DebugOutput
+  test: TestOutput
+  example: ExampleOutput
+  debug: DebugOutput
+  ticTacToe: TicTacToeOutput
 }

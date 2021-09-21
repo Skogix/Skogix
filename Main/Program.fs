@@ -32,9 +32,8 @@ type MainWindow() as this =
 
         Elmish.Program.mkProgram (fun _ -> shellInit) shellUpdate shellView
         |> Program.withHost this
-//        |> Program.withSubscription timer
-        |> Program.withSubscription ExampleUpdate.timer
-        |> Program.withSubscription DebugUpdate.timer
+//        |> Program.withSubscription ExampleUpdate.timer
+//        |> Program.withSubscription DebugUpdate.timer
         |> Program.withConsoleTrace
         |> Program.run
 type App() =

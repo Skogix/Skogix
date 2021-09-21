@@ -5,6 +5,7 @@
 </PropertyGroup>
 
 <ItemGroup>
+    <Compile Include="Domain\TicTacToe.fs" />
     <Compile Include="Input.fs" />
     <Compile Include="Debug.fs" />
     <Compile Include="State.fs" />

@@ -7,7 +7,7 @@ open Core.Input
 open Core.State
 
 let view (shellState: Core.State.ShellState) (dispatch: ExampleInput -> unit) =
-  let state = shellState.Example
+  let state = shellState.example
   DockPanel.create [ DockPanel.children [ Button.create [ Button.dock Dock.Bottom
                                                           Button.height 50.
                                                           Button.onClick (fun _ -> dispatch (IncrementDelayed))

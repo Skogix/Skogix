@@ -1,5 +1,7 @@
 module Core.Init
 open Core.Debug
+open Core.Domain.TicTacToe
+open Core.Input
 open Elmish
 open State
 /// ToDo
@@ -21,3 +23,11 @@ let debugInit() =
     manager = Debug.debugManager
     messages = []}
   debugState, Cmd.none
+let ticTacToeInit() =
+  let squareMap =
+    [ for i in [0..8] do
+        (i, None) ] |> Map.ofList
+  let state = {
+    squareMap = squareMap
+    currentTurn = Cross }
+  state, Cmd.none

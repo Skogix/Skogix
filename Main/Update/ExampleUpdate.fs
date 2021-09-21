@@ -30,7 +30,7 @@ let incrementDelayedCmd (dispatch: ShellMessage -> unit) =
  
   
 let update (msg: ExampleInput) (shellState: Core.State.ShellState) =
-  let state = shellState.Example
+  let state = shellState.example
   match msg with
   | Increment ->
     Update.incrementCounter state, Cmd.none

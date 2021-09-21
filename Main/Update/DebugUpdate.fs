@@ -10,12 +10,12 @@ let update (message:Core.Input.DebugInput) (state:ShellState) =
   match message with
   | DebugInput.Update ->
     let updatedState =
-      {state.Debug with messages = state.Debug.manager.Get() |> Async.RunSynchronously}
+      {state.debug with messages = state.debug.manager.Get() |> Async.RunSynchronously}
     updatedState, Cmd.none
   | DebugInput.Add str ->
-    state.Debug.manager.Send str
+    state.debug.manager.Send str
     let cmdMessage = Core.Input.ShellMessage.DebugPageMessage Core.Input.DebugInput.Update
-    state.Debug, Cmd.ofMsg (cmdMessage)
+    state.debug, Cmd.ofMsg (cmdMessage)
 
 let timer (state:ShellState) = // exempel på timer som kors från ui
   let manager = state

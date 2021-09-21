@@ -7,7 +7,7 @@ open Core.State
 
   
 let update (message:TestInput) (state:ShellState)=
-  let testState = state.Test
+  let testState = state.test
   match message with
   | DoNothing ->
     

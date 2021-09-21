@@ -7,6 +7,7 @@ open Avalonia.Controls
 open Core.Input
 open Main
 open Core.State
+open Main.Update
 /// Shell.fs
 /// en wrapper-modul som låter core-moduler kommunicera
 /// är ansvarig for all ui-data, routeing, meny / persistent ui-element
@@ -17,26 +18,30 @@ let shellInit: ShellState * Cmd<ShellMessage> =
   let exampleInit, exampleCmd = Core.Init.exampleInit
   let testInit, testCmd = Core.Init.testInit
   let debugInit, debugCmd = Core.Init.debugInit()
+  let ticTacToeInit, ticTacToeCmd = Core.Init.ticTacToeInit()
   {
-    Core.State.Example = exampleInit
-    Core.State.Test = testInit
-    Core.State.Debug = debugInit
+    Core.State.example = exampleInit
+    Core.State.test = testInit
+    Core.State.debug = debugInit
+    Core.State.ticTacToe = ticTacToeInit
   },
   Cmd.batch [exampleCmd]
 /// shellUpdate: ShellMessage -> ShellState -> (ShellState * Cmd<ShellMessage>)
 let shellUpdate message state =
-  Core.Debug.debugShellMessage message
+//  Core.Debug.debugShellMessage message
   match message with
+  | TicTacToeMessage message ->
+    let newState, returnMessage = TicTacToeUpdate.update message state
+    {state with ticTacToe = newState}, returnMessage
   | TestPageMessage message ->
     let newState, returnMessage = TestPage.update message state
-    let updatedState = {state with Test = newState}
-    (updatedState, returnMessage)
+    ({state with test = newState}, returnMessage)
   | ExamplePageMessage message ->
     let newState, returnMessage = ExampleUpdate.update message state
-    {state with Example = newState}, returnMessage
+    {state with example = newState}, returnMessage
   | DebugPageMessage message ->
     let newState, returnMessage = DebugUpdate.update message state
-    {state with Debug = newState}, returnMessage
+    {state with debug = newState}, returnMessage
 
 /// shellView: ShellState -> (ShellMessage -> unit) -> IView<DockPanel>
 /// är i praktiken just nu bara menyn
@@ -48,7 +53,7 @@ let shellView (shellState: ShellState) (dispatch: ShellMessage -> unit) =
         TabControl.viewItems [
           TabItem.create [
             TabItem.header "TicTacToe"
-            TabItem.content (View.TicTacToeView.view shellState (DebugPageMessage >> dispatch))
+            TabItem.content (View.TicTacToeView.view shellState (TicTacToeMessage >> dispatch))
           ]
           TabItem.create [
             TabItem.header "Example"

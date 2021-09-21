@@ -13,7 +13,7 @@ let view (state:ShellState) dispatch =
         Button.content "Add debug"
         Button.onClick (fun _ -> DebugInput.Add "Test" |> dispatch)
       ]
-      let list = state.Debug.messages
+      let list = state.debug.messages
       for str in list do
         TextBlock.create [
           TextBlock.text (str.Message |> string)
