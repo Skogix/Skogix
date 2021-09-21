@@ -12,20 +12,6 @@ open Main.Update
 /// en wrapper-modul som låter core-moduler kommunicera
 /// är ansvarig for all ui-data, routeing, meny / persistent ui-element
 
-/// shellInit: ShellState * Cmd<ShellMessage>
-let shellInit: ShellState * Cmd<ShellMessage> =
-  // om init kor ett command så kommer det här inte att funka, t.ex hämta data
-  let exampleInit, exampleCmd = Core.Init.exampleInit
-  let testInit, testCmd = Core.Init.testInit
-  let debugInit, debugCmd = Core.Init.debugInit()
-  let ticTacToeInit, ticTacToeCmd = Core.Init.ticTacToeInit()
-  {
-    Core.State.example = exampleInit
-    Core.State.test = testInit
-    Core.State.debug = debugInit
-    Core.State.ticTacToe = ticTacToeInit
-  },
-  Cmd.batch [exampleCmd]
 /// shellUpdate: ShellMessage -> ShellState -> (ShellState * Cmd<ShellMessage>)
 let handleMessage (message, state) = 
   match message with

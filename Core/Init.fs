@@ -32,3 +32,17 @@ let ticTacToeInit() =
     winner = None
     currentTurn = O }
   state, Cmd.none
+/// shellInit: ShellState * Cmd<ShellMessage>
+let shellInit: ShellState * Cmd<ShellMessage> =
+  // om init kor ett command så kommer det här inte att funka, t.ex hämta data
+  let exampleInit, exampleCmd = exampleInit
+  let testInit, testCmd = testInit
+  let debugInit, debugCmd = debugInit()
+  let ticTacToeInit, ticTacToeCmd = ticTacToeInit()
+  {
+    Core.State.example = exampleInit
+    Core.State.test = testInit
+    Core.State.debug = debugInit
+    Core.State.ticTacToe = ticTacToeInit
+  },
+  Cmd.batch [exampleCmd]

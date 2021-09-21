@@ -30,7 +30,7 @@ type MainWindow() as this =
         this.VisualRoot.VisualRoot.Renderer.DrawFps <- true
         this.VisualRoot.VisualRoot.Renderer.DrawDirtyRects <- true
 
-        Elmish.Program.mkProgram (fun _ -> shellInit) shellUpdate shellView
+        Elmish.Program.mkProgram (fun _ -> Core.Init.shellInit) shellUpdate shellView
         |> Program.withHost this
 //        |> Program.withSubscription ExampleUpdate.timer
 //        |> Program.withSubscription DebugUpdate.timer

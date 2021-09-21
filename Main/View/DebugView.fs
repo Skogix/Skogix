@@ -15,7 +15,7 @@ let view (state:ShellState) dispatch =
       ]
       Button.create [
         Button.content "Stop"
-        Button.onClick (fun _ -> DebugInput.Stop|> dispatch)
+        Button.onClick (fun _ -> DebugInput.Stop |> dispatch)
       ]
       Button.create [
         Button.content "Add debug"

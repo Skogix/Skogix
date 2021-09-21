@@ -13,9 +13,14 @@ open Core.Input
 
 let debugShellMessage (msg:Core.Input.ShellMessage) =
   match msg with
-  | TicTacToeMessage ticTacToeMessage -> ""
+  | TicTacToeMessage ticTacToeMessage ->
+    match ticTacToeMessage with
+    | TryPlaceMove i -> $"ticTacToe.TryPlaceMove {i}"
+    | Reset -> $"ticTacToe.Reset"
   | ShellMessage.DebugPageMessage debugMessage ->
     match debugMessage with
+    | Start -> "debug.Start"
+    | Stop -> "debug.Stop"
     | Update -> ""
     | Add str -> $"debug.Add {str}"
   | ShellMessage.TestPageMessage testMessage -> ""
