@@ -16,8 +16,8 @@ type ExampleInput =
   | RunningTrue
   | RunningFalse
 type DebugInput =
-  | Update
   | Add of string
+  | Update
   | Start
   | Stop
 type TicTacToeInput =

@@ -14,11 +14,10 @@ type ExampleOutput = {
 type TestOutput = {
   stringValue: string
   intValue: int
-  debugOutput: DebugData list
+  debugOutput: string list
 }
 type DebugOutput = {
-  manager: DebugManager
-  messages: DebugData list
+  messages: string list
   enabled: bool
 }
 type TicTacToeOutput = {

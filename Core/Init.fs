@@ -21,7 +21,6 @@ let testInit = {
 let debugInit() =
   let debugState = {
     enabled = true
-    manager = Debug.debugManager
     messages = []}
   debugState, Cmd.none
 let ticTacToeInit() =

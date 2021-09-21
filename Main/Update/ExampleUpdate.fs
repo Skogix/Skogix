@@ -21,7 +21,6 @@ let incrementDelayedCmd (dispatch: ShellMessage -> unit) =
   let delayedDispatch =
     async {
       do! Async.Sleep 3000
-      Core.Debug.debug "Kor incrementDelayedCmd" 
       dispatch (ExamplePageMessage Increment)
     }
   Async.StartImmediate delayedDispatch

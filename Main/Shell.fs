@@ -27,8 +27,7 @@ let shellInit: ShellState * Cmd<ShellMessage> =
   },
   Cmd.batch [exampleCmd]
 /// shellUpdate: ShellMessage -> ShellState -> (ShellState * Cmd<ShellMessage>)
-let shellUpdate message state =
-  Core.Debug.debugShellMessage message
+let handleMessage (message, state) = 
   match message with
   | TicTacToeMessage message ->
     let newState, returnMessage = TicTacToeUpdate.update message state
@@ -42,7 +41,17 @@ let shellUpdate message state =
   | DebugPageMessage message ->
     let newState, returnMessage = DebugUpdate.update message state
     {state with debug = newState}, returnMessage
-
+let debugMessage (message, state) =
+  let formattedMessage = Core.Debug.debugShellMessage message
+  let newDebugState = {state.debug with messages = (formattedMessage :: state.debug.messages)}
+  let newState = {state with debug = newDebugState}
+  (message, newState)
+let shellUpdate message (state:ShellState) =
+  // todo skicka ett cmd med nya debug
+//  Core.Debug.debugShellMessage message
+  (message, state)
+  |> debugMessage
+  |> handleMessage
 /// shellView: ShellState -> (ShellMessage -> unit) -> IView<DockPanel>
 /// är i praktiken just nu bara menyn
 let shellView (shellState: ShellState) (dispatch: ShellMessage -> unit) =
