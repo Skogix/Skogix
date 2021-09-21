@@ -49,17 +49,20 @@ let view (shellState:ShellState) dispatch =
                   match value with
                   | Some v ->
                     match v with
-                    | Core.Domain.TicTacToe.Circle -> "O"
-                    | Core.Domain.TicTacToe.Cross -> "X"
+                    | Core.Domain.TicTacToe.X -> "O"
+                    | Core.Domain.TicTacToe.O -> "X"
                   | None -> ""
                 Button.create [
                   Button.width 200.
                   Button.height 200.
                   Button.margin 10.
-                  Button.content (string text)
+                  Button.content ($"{text}")
                   Button.onClick (fun _ -> dispatch (TryPlaceMove id))
                 ]
             ]
+          ]
+          TextBlock.create [
+            TextBlock.text $"Winner: {shellState.ticTacToe.winner}"
           ]
         ]
       ]

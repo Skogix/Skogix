@@ -23,6 +23,7 @@ type DebugOutput = {
 type TicTacToeOutput = {
   squareMap: SquareMap
   currentTurn: Domain.TicTacToe.Player
+  winner: Player option
   }
 type ShellState = {
   test: TestOutput

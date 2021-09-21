@@ -29,5 +29,6 @@ let ticTacToeInit() =
         (i, None) ] |> Map.ofList
   let state = {
     squareMap = squareMap
-    currentTurn = Cross }
+    winner = None
+    currentTurn = O }
   state, Cmd.none
