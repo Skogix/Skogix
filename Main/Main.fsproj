@@ -6,31 +6,31 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Update\DebugUpdate.fs" />
-        <Compile Include="Update\ExampleUpdate.fs" />
-        <Compile Include="Update\TestUpdate.fs" />
-        <Compile Include="Update\TicTacToeUpdate.fs" />
-        <Compile Include="View\ExampleView.fs" />
-        <Compile Include="View\TestView.fs" />
-        <Compile Include="View\DebugView.fs" />
-        <Compile Include="View\TicTacToeView.fs" />
-        <Compile Include="Shell.fs" />
-        <Compile Include="Program.fs" />
+        <Compile Include="Route\Debug.fs"/>
+        <Compile Include="Route\Example.fs"/>
+        <Compile Include="Route\Test.fs"/>
+        <Compile Include="Route\TicTacToe.fs"/>
+        <Compile Include="View\Example.fs"/>
+        <Compile Include="View\Test.fs"/>
+        <Compile Include="View\Debug.fs"/>
+        <Compile Include="View\TicTacToe.fs"/>
+        <Compile Include="Shell.fs"/>
+        <Compile Include="Program.fs"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Core\Core.fsproj" />
+        <ProjectReference Include="..\Core\Core.fsproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia.Desktop" Version="0.9.7" />
-        <PackageReference Include="JaggerJo.Avalonia.FuncUI" Version="0.4.0" />
-        <PackageReference Include="JaggerJo.Avalonia.FuncUI.DSL" Version="0.4.0" />
-        <PackageReference Include="JaggerJo.Avalonia.FuncUI.Elmish" Version="0.4.0" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.9.7"/>
+        <PackageReference Include="JaggerJo.Avalonia.FuncUI" Version="0.4.0"/>
+        <PackageReference Include="JaggerJo.Avalonia.FuncUI.DSL" Version="0.4.0"/>
+        <PackageReference Include="JaggerJo.Avalonia.FuncUI.Elmish" Version="0.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Remove=".template.config\**" />
+        <EmbeddedResource Remove=".template.config\**"/>
     </ItemGroup>
 
 </Project>

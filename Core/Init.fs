@@ -1,5 +1,5 @@
 module Core.Init
-open Core.Debug
+
 open Core.Domain.TicTacToe
 open Core.Input
 open Elmish
@@ -9,40 +9,48 @@ open State
 
 /// Init.fs
 /// all initial state
-let exampleInit =
+let exampleInit = { running = false; count = 0 }, Cmd.none
+
+let testInit =
   {
-    running = false
-    count = 0 }
-  , Cmd.none
-let testInit = {
-  stringValue = "Huhu"
-  intValue = 0
-  debugOutput = []}, Cmd.none
-let debugInit() =
-  let debugState = {
-    enabled = true
-    messages = []}
+    stringValue = "Huhu"
+    intValue = 0
+    debugOutput = []
+  },
+  Cmd.none
+
+let debugInit () =
+  let debugState = { enabled = true; messages = [] }
   debugState, Cmd.none
-let ticTacToeInit() =
+
+let ticTacToeInit () =
   let squareMap =
-    [ for i in [0..8] do
-        (i, None) ] |> Map.ofList
-  let state = {
-    squareMap = squareMap
-    winner = None
-    currentTurn = O }
+    [
+      for i in [ 0 .. 8 ] do
+        (i, None)
+    ]
+    |> Map.ofList
+
+  let state =
+    {
+      squareMap = squareMap
+      winner = None
+      currentTurn = O
+    }
+
   state, Cmd.none
 /// shellInit: ShellState * Cmd<ShellMessage>
 let shellInit: ShellState * Cmd<ShellMessage> =
   // om init kor ett command så kommer det här inte att funka, t.ex hämta data
   let exampleInit, exampleCmd = exampleInit
   let testInit, testCmd = testInit
-  let debugInit, debugCmd = debugInit()
-  let ticTacToeInit, ticTacToeCmd = ticTacToeInit()
+  let debugInit, debugCmd = debugInit ()
+  let ticTacToeInit, ticTacToeCmd = ticTacToeInit ()
+
   {
-    Core.State.example = exampleInit
-    Core.State.test = testInit
-    Core.State.debug = debugInit
-    Core.State.ticTacToe = ticTacToeInit
+    State.example = exampleInit
+    State.test = testInit
+    State.debug = debugInit
+    State.ticTacToe = ticTacToeInit
   },
-  Cmd.batch [exampleCmd]
+  Cmd.batch [ exampleCmd ]

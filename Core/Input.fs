@@ -1,28 +1,30 @@
 module Core.Input
 
-open Core.Domain
 
 /// Input.fs
 /// innehåller all kommunikation mellan UI -> Core
 /// shellmessage är sättet moduler kan prata med varandra via UI
-type TestInput =
-  | DoNothing
+type TestInput = | DoNothing
+
 type ExampleInput =
   | IncrementIfRunning
   | Increment
-  | IncrementDelayed 
+  | IncrementDelayed
   | Decrement
   | ResetCount
   | RunningTrue
   | RunningFalse
+
 type DebugInput =
   | Add of string
   | Update
   | Start
   | Stop
+
 type TicTacToeInput =
   | TryPlaceMove of int
   | Reset
+
 type ShellMessage =
   | TestPageMessage of TestInput
   | ExamplePageMessage of ExampleInput

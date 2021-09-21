@@ -1,7 +1,7 @@
 module Core.Debug
 
-open System
 open Core.Input
+open State
 /// ToDo
 /// filtrering
 /// har meddelandet skickats till output
@@ -11,7 +11,7 @@ open Core.Input
 /// hanterar all intern debugging
 /// borde vara threadsafe
 
-let debugShellMessage (msg:Core.Input.ShellMessage) =
+let debugShellMessage (msg: ShellMessage) =
   match msg with
   | TicTacToeMessage ticTacToeMessage ->
     match ticTacToeMessage with
@@ -33,3 +33,15 @@ let debugShellMessage (msg:Core.Input.ShellMessage) =
     | ResetCount -> $"example.ResetCount"
     | RunningTrue -> $"example.RunningTrue"
     | RunningFalse -> $"example.RunningFalse"
+/// debugMessage: ShellMessage * ShellState -> ShellMessage * ShellState
+/// uppdaterar state med ny debug
+let debugMessage (message, state) =
+  let formattedMessage = debugShellMessage message
+
+  let newDebugState =
+    { state.debug with
+        messages = (formattedMessage :: state.debug.messages)
+    }
+
+  let newState = { state with debug = newDebugState }
+  (message, newState)
