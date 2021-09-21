@@ -50,10 +50,12 @@ let debug str = debugManager.Send str
 let debugShellMessage (msg:Core.Input.ShellMessage) =
   let send str = debugManager.Send str
   match msg with
+  | TicTacToeMessage ticTacToeMessage -> ()
   | ShellMessage.DebugPageMessage debugMessage ->
     match debugMessage with
     | Update -> ()
     | Add str -> send $"debug.Add {str}"
+  | ShellMessage.TestPageMessage testMessage -> ()
   | ShellMessage.ExamplePageMessage exampleMessage ->
     match exampleMessage with
     | IncrementIfRunning -> ()
