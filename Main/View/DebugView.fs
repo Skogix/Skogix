@@ -10,6 +10,14 @@ let view (state:ShellState) dispatch =
   StackPanel.create [
     StackPanel.children [
       Button.create [
+        Button.content "Start"
+        Button.onClick (fun _ -> DebugInput.Start |> dispatch)
+      ]
+      Button.create [
+        Button.content "Stop"
+        Button.onClick (fun _ -> DebugInput.Stop|> dispatch)
+      ]
+      Button.create [
         Button.content "Add debug"
         Button.onClick (fun _ -> DebugInput.Add "Test" |> dispatch)
       ]

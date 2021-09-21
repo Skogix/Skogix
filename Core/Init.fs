@@ -20,6 +20,7 @@ let testInit = {
   debugOutput = []}, Cmd.none
 let debugInit() =
   let debugState = {
+    enabled = true
     manager = Debug.debugManager
     messages = []}
   debugState, Cmd.none

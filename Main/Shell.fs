@@ -28,7 +28,7 @@ let shellInit: ShellState * Cmd<ShellMessage> =
   Cmd.batch [exampleCmd]
 /// shellUpdate: ShellMessage -> ShellState -> (ShellState * Cmd<ShellMessage>)
 let shellUpdate message state =
-//  Core.Debug.debugShellMessage message
+  Core.Debug.debugShellMessage message
   match message with
   | TicTacToeMessage message ->
     let newState, returnMessage = TicTacToeUpdate.update message state

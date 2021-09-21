@@ -18,8 +18,11 @@ type ExampleInput =
 type DebugInput =
   | Update
   | Add of string
+  | Start
+  | Stop
 type TicTacToeInput =
   | TryPlaceMove of int
+  | Reset
 type ShellMessage =
   | TestPageMessage of TestInput
   | ExamplePageMessage of ExampleInput

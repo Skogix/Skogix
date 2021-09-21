@@ -19,6 +19,7 @@ type TestOutput = {
 type DebugOutput = {
   manager: DebugManager
   messages: DebugData list
+  enabled: bool
 }
 type TicTacToeOutput = {
   squareMap: SquareMap

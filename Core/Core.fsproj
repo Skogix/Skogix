@@ -6,13 +6,14 @@
 
 <ItemGroup>
     <Compile Include="Domain\TicTacToe.fs" />
-    <Compile Include="Result.fs" />
+    <Compile Include="Skogix.fs" />
     <Compile Include="Input.fs" />
     <Compile Include="Debug.fs" />
     <Compile Include="State.fs" />
     <Compile Include="Init.fs" />
     <Compile Include="Example\Update.fs" />
     <Compile Include="Test\Update.fs" />
+    <Compile Include="TicTacToe\Update.fs" />
 </ItemGroup>
 
 <ItemGroup>
