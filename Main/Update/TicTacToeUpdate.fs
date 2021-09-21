@@ -2,6 +2,7 @@ module Main.Update.TicTacToeUpdate
 
 open Core.State
 open Elmish
+open Core.Result
 
 let switchTurn (state:TicTacToeOutput) =
   match state.currentTurn with
@@ -28,7 +29,7 @@ let update (message:Core.Input.TicTacToeInput) (shellState:ShellState) =
 //      |> switchTurn
       state
       |> tryAddMove move
-      |> Core.Result.SkogixOptionBind switchTurn
+      |>> switchTurn
   let output = 
     match newState with
     | Core.Result.Yay yayState -> yayState
