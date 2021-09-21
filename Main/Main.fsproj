@@ -12,6 +12,7 @@
         <Compile Include="View\ExampleView.fs" />
         <Compile Include="View\TestView.fs" />
         <Compile Include="View\DebugView.fs" />
+        <Compile Include="View\TicTacToeView.fs" />
         <Compile Include="Shell.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>

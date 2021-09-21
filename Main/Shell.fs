@@ -47,6 +47,10 @@ let shellView (shellState: ShellState) (dispatch: ShellMessage -> unit) =
         TabControl.tabStripPlacement Dock.Top
         TabControl.viewItems [
           TabItem.create [
+            TabItem.header "TicTacToe"
+            TabItem.content (View.TicTacToeView.view shellState (DebugPageMessage >> dispatch))
+          ]
+          TabItem.create [
             TabItem.header "Example"
             TabItem.content (View.ExampleView.view shellState (ExamplePageMessage >> dispatch))
           ]

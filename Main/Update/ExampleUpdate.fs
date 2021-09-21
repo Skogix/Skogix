@@ -15,7 +15,7 @@ let timer state = // exempel på timer som kors från ui
     let invoke() =
       (ExamplePageMessage IncrementIfRunning) |> dispatch // vad som invokeas
       true // fortsätta korareturnms
-    DispatcherTimer.Run(Func<bool>(invoke), TimeSpan.FromMilliseconds 1000.) |> ignore // i princip en async.sleep 
+    DispatcherTimer.Run(Func<bool>(invoke), TimeSpan.FromMilliseconds 3000.) |> ignore // i princip en async.sleep 
   Cmd.ofSub sub // skickar command med en subrutin
 let incrementDelayedCmd (dispatch: ShellMessage -> unit) =
   let delayedDispatch =

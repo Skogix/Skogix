@@ -5,6 +5,7 @@ ToDo
   - https://docs.avaloniaui.net/docs/layout
 - kolla upp om det är värt att använda xaml for layout
   - https://docs.avaloniaui.net/docs/getting-started/ide-support
+  - verkar vara värt for att få ha lite designer view osv
 - settings
 - testengine
 - ui-haxx
@@ -13,7 +14,6 @@ ToDo
   - keyboard binds
   
 - testprojekt
-  - tic-tac-toe
   - chess
   - pathfinding
   - parser
@@ -25,6 +25,7 @@ ToDo
 0.4     example page
 0.5     file structure
 0.6     debug
+0.7     tic-tac-toe
 ```
 ```
 core
