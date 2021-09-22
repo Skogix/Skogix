@@ -33,6 +33,11 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[0.9.7, )",
+              "generatePathProperty": true
+            },
             "Elmish": {
               "target": "Package",
               "version": "[3.0.6, )",

@@ -1945,6 +1945,7 @@
       },
       "Core/1.0.0": {
         "dependencies": {
+          "Avalonia": "0.9.7",
           "Elmish": "3.0.6",
           "FSharp.Core": "5.0.0",
           "FSharp.Data": "3.3.3"
