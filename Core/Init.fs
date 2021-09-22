@@ -15,7 +15,6 @@ let testInit =
   {
     stringValue = "Huhu"
     intValue = 0
-    debugOutput = []
   },
   Cmd.none
 
@@ -35,7 +34,7 @@ let ticTacToeInit () =
     {
       squareMap = squareMap
       winner = None
-      currentTurn = O
+      currentTurn = Domain.TicTacToe.X
     }
 
   state, Cmd.none

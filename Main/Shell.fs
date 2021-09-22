@@ -3,6 +3,7 @@ module Main.Shell
 open Avalonia.FuncUI.DSL
 open Avalonia.Controls
 open Core.Input
+open Elmish
 open Main
 open Core.State
 open Main.Route
@@ -28,7 +29,7 @@ let routeInput (message, state) =
     { state with debug = newState }, returnMessage
 
 /// shellUpdate: ShellMessage -> ShellState -> (ShellState * Cmd<ShellMessage>)
-let shellUpdate message (state: ShellState) =
+let shellUpdate message (state) =
   // todo skicka ett cmd med nya debug
 //  Core.Debug.debugShellMessage message
   (message, state)
@@ -36,7 +37,7 @@ let shellUpdate message (state: ShellState) =
   |> routeInput
 /// shellView: ShellState -> (ShellMessage -> unit) -> IView<DockPanel>
 /// är i praktiken just nu bara menyn
-let shellView (shellState: ShellState) (dispatch: ShellMessage -> unit) =
+let shellView (shellState:ShellState) (dispatch: ShellMessage -> unit) =
   DockPanel.create [ DockPanel.children [ TabControl.create [ TabControl.tabStripPlacement Dock.Top
                                                               TabControl.viewItems [ TabItem.create [ TabItem.header
                                                                                                         "TicTacToe"

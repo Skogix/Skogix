@@ -22,7 +22,6 @@ let update (message: DebugInput) (shellState: ShellState) =
   let debugState, cmd =
     match message with
     | DebugInput.Start ->
-      printfn "STAAAAAAART!"
       { shellState.debug with enabled = true }, Cmd.none
     | DebugInput.Add str ->
       let newMessages = str :: shellState.debug.messages

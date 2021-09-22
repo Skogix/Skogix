@@ -1,7 +1,7 @@
 module Core.Debug
 
+open System
 open Core.Input
-open State
 /// ToDo
 /// filtrering
 /// har meddelandet skickats till output
@@ -10,7 +10,7 @@ open State
 /// Debug.fs
 /// hanterar all intern debugging
 /// borde vara threadsafe
-
+type DebugData = DateTime * string
 let debugShellMessage (msg: ShellMessage) =
   match msg with
   | TicTacToeMessage ticTacToeMessage ->
@@ -35,7 +35,7 @@ let debugShellMessage (msg: ShellMessage) =
     | RunningFalse -> $"example.RunningFalse"
 /// debugMessage: ShellMessage * ShellState -> ShellMessage * ShellState
 /// uppdaterar state med ny debug
-let debugMessage (message, state) =
+let debugMessage (message, state:Core.State.ShellState) =
   let formattedMessage = debugShellMessage message
 
   let newDebugState =
