@@ -11,5 +11,17 @@ type Board = {squares:Square list;id:BoardID}
 type Column = Square list
 type Row = Square list
 type ActiveColor = Color
-type CastlingRight = Rank*Color
-type Castling = CastlingRight list
+type Castling = Rank*Color
+type CastlingRight = Castling list
+type EnPassant = Position
+type Clock = int
+type HalfMove = Clock
+type FullMove = Clock
+type FEN = {
+    board:Board
+    activeColor:ActiveColor
+    castlingRight:CastlingRight
+    enPassant:EnPassant
+    halfMove:HalfMove
+    fullMove:FullMove
+}
