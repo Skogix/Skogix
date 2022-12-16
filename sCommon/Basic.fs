@@ -70,23 +70,18 @@ module Lift =
     /// combine x lifter values using a function
     /// lift2: (a->b->c) -> X<a> -> X<b> -> X<c>
     let (<*>) = Apply.applyList
-
     let (<!>) = List.map
     let lift2 f x y = f <!> x <*> y
     let lift3 f x y z = f <!> x <*> y <*> z
     let lift4 f x y z w = f <!> x <*> y <*> z <*> w
-
     let add x y = x + y
     let addPairList = lift2 add
     //  addPairOption (Some 1) (Some 2) |> ignore
     // Some 3
-
-
     let lift2FromScratch f xOpt yOpt =
         match xOpt, yOpt with
         | Some x, Some y -> Some(f x y)
         | _ -> None
-
     let applyFromLift2 fOpt xOpt = lift2FromScratch id fOpt xOpt
     let (<*) x y = lift2 (fun left right -> left) x y
     let ( *> ) x y = lift2 (fun left right -> left) x y
