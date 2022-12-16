@@ -1,12 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Core", "Core\Core.fsproj", "{6E756A55-BC39-455B-AFB1-911A864A723E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpConsoleUI", "CSharpConsoleUI\CSharpConsoleUI.csproj", "{95EFF8FB-4E3E-49BF-9B03-5DB146FA744E}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SandboxUI", "SandboxUI\SandboxUI.fsproj", "{C2AEFE8D-1218-4190-A2FC-8E88531344B1}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sparse", "sparse\Sparse\Sparse.fsproj", "{1CF8A5C4-608D-4B48-BBBD-24E13675D846}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "sParse", "sParse\sParse.fsproj", "{77A23D78-5B77-465D-9AEC-69ED9F98B46C}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "sCommon", "sCommon\sCommon.fsproj", "{C0C717B7-D315-4672-AA33-4C7EF510B1BE}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "sChess", "sChess\sChess.fsproj", "{0F888A68-3949-433D-82F4-AB18A9A76A7B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "sPathfinding", "sPathfinding\sPathfinding.fsproj", "{542D02E3-1A1A-4055-B9C6-6570C56D6B18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,10 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6E756A55-BC39-455B-AFB1-911A864A723E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E756A55-BC39-455B-AFB1-911A864A723E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E756A55-BC39-455B-AFB1-911A864A723E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E756A55-BC39-455B-AFB1-911A864A723E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95EFF8FB-4E3E-49BF-9B03-5DB146FA744E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95EFF8FB-4E3E-49BF-9B03-5DB146FA744E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95EFF8FB-4E3E-49BF-9B03-5DB146FA744E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,9 +26,21 @@ Global
 		{C2AEFE8D-1218-4190-A2FC-8E88531344B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2AEFE8D-1218-4190-A2FC-8E88531344B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2AEFE8D-1218-4190-A2FC-8E88531344B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CF8A5C4-608D-4B48-BBBD-24E13675D846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CF8A5C4-608D-4B48-BBBD-24E13675D846}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CF8A5C4-608D-4B48-BBBD-24E13675D846}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CF8A5C4-608D-4B48-BBBD-24E13675D846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77A23D78-5B77-465D-9AEC-69ED9F98B46C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A23D78-5B77-465D-9AEC-69ED9F98B46C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A23D78-5B77-465D-9AEC-69ED9F98B46C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A23D78-5B77-465D-9AEC-69ED9F98B46C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C717B7-D315-4672-AA33-4C7EF510B1BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C717B7-D315-4672-AA33-4C7EF510B1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C717B7-D315-4672-AA33-4C7EF510B1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C717B7-D315-4672-AA33-4C7EF510B1BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F888A68-3949-433D-82F4-AB18A9A76A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F888A68-3949-433D-82F4-AB18A9A76A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F888A68-3949-433D-82F4-AB18A9A76A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F888A68-3949-433D-82F4-AB18A9A76A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{542D02E3-1A1A-4055-B9C6-6570C56D6B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{542D02E3-1A1A-4055-B9C6-6570C56D6B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{542D02E3-1A1A-4055-B9C6-6570C56D6B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{542D02E3-1A1A-4055-B9C6-6570C56D6B18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
