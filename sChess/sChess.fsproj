@@ -8,6 +8,11 @@
     <ItemGroup>
       <Compile Include="Entities.fs" />
       <Compile Include="FEN.fs" />
+      <Compile Include="FENParse.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\sParse\sParse.fsproj" />
     </ItemGroup>
 
 </Project>
