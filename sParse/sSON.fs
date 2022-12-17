@@ -15,8 +15,6 @@ let (>>%) p x = p |>> fun _ -> x
 let skogixNull =
   parseString "null"
   >>% SkogixNull <?> "null"
-run skogixNull "null"
-run skogixNull "huhu"
 let skogixBool =
   let skogixTrue =
     parseString "true"
@@ -71,12 +69,6 @@ let skogixNumber =
   optMinus .>>. numberPart .>>. opt fractionPart
   |>> convertToSkogixNumber
   <?> "number"
-run skogixNumber "123"
-run skogixNumber "-123"
-run skogixNumber "123.4"
-// todo vetefan hur läsa resten ska lösas
-run skogixNumber "-123."
-run skogixNumber "00.1"
 
 let createParserForwardedToRef<'a>() =
   let dummyParser =
@@ -84,7 +76,7 @@ let createParserForwardedToRef<'a>() =
     {parseFn=innerFn;label="dno"}
   let parserRef = ref dummyParser
   let innerFn input =
-    run !parserRef input
+    run parserRef.Value input
   let wrapperParser = {parseFn=innerFn;label="dno"}
   wrapperParser, parserRef
 let sSharpValue, sValueRef = createParserForwardedToRef<SkogixValue>() 
@@ -99,18 +91,7 @@ let skogixArray =
   |>> SkogixArray
   <?> "array"
 // sätter potentiella forwarden till number
-sValueRef := skogixNumber
-run skogixArray "[1,2]"
-run skogixArray "[   1,2]"
-run skogixArray "[1,    2]"
-run skogixArray "[1.2]"
-run skogixArray "[a, 1.2]" // kan bara köra numbers atm
-
-run skogixArray "[1,true]"
-run skogixArray "[  x, 1,null]"
-run skogixArray "[1, ,.,   2]" // fail med .
-run skogixArray "[1.2]"
-run skogixArray "[a, 1.2]" // string "a", number 1.2
+sValueRef.Value <- skogixNumber
 
 let skogixObject =
   let left = parseChar '{' .>> spaces
@@ -143,7 +124,7 @@ let skogixCommand =
 //  let skogixCommand = command .>>. argument
   skogixCommand
   |>>  SkogixCommand
-sValueRef := choice
+sValueRef.Value <- choice
   [
     skogixNull
     skogixBool

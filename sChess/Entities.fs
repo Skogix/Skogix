@@ -4,10 +4,13 @@ type Rank = Pawn | Rook | Knight | Bishop | Queen | King
 type X = int
 type Y = int
 type Piece = {color:Color;rank:Rank}
-type Position = {x:X;y:Y}
-type Square = {position:Position;piece:Piece option}
-type BoardID = int
-type Board = {squares:Square list;id:BoardID}
+type Position = {x:X;y:Y} with 
+    static member create x y = {x=x;y=y}
+type Move = Piece * Position
+type SquareID = int
+type Square = {position:Position;piece:Piece option} with 
+    static member create pos piece = {position=pos;piece=piece}
+type Board = {squares:Square list}
 type Column = Square list
 type Row = Square list
 type ActiveColor = Color

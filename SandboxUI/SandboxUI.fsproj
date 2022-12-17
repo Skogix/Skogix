@@ -6,7 +6,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Program.fs"/>
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\sChess\sChess.fsproj" />
+      <ProjectReference Include="..\sCommon\sCommon.fsproj" />
+      <ProjectReference Include="..\sParse\sParse.fsproj" />
+      <ProjectReference Include="..\sPathfinding\sPathfinding.fsproj" />
     </ItemGroup>
 
 </Project>
