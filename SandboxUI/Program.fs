@@ -6,16 +6,14 @@ open sChess.Entities
 
 Console.Clear()
 let print x = printfn "%A" x
-
-let board = 
-  let result :Result<string list * string> = 
-    run sChess.FENParse.pFEN sChess.FEN.game1
-  match result with
-  | ParseSuccess (result, msg) 
-    -> result
-  | ParseFailure (x,y) 
-    -> []
-
-getFENBoard game2
-|> printBoard
+// getFENBoard starting |> printBoard
+// getFENBoard sChess.FEN.game1 |> printBoard
+// getFENBoard sChess.FEN.game2 |> printBoard
+// getFENBoard sChess.FEN.game3 |> printBoard
+sChess.FENParse.replaceNumberWithDots game1
+|> String.concat ""
+|> fun x -> x.Split(" ") 
+|> fun x -> x.[0]
+|> print
+// |> List.iter(fun x -> x |> String.concat |> printfn "%O")
 Console.ReadLine() |> ignore
